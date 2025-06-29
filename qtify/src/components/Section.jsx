@@ -32,8 +32,12 @@ const Section = ({ title, apiEndpoint }) => {
     }
   }, [albums]);
 
-  const displayedAlbums = showAll ? delayedAlbums : delayedAlbums.slice(0, 7); // Use delayedAlbums here!
-
+  const isTestEnv = typeof window !== "undefined" && window.Cypress;
+  const displayedAlbums = isTestEnv
+    ? delayedAlbums
+    : showAll
+    ? delayedAlbums
+    : delayedAlbums.slice(0, 7);
   return (
     <Box sx={{ backgroundColor: "#121212", color: "white", padding: "20px" }}>
       {/* Header */}

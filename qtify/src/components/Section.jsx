@@ -39,7 +39,7 @@ const Section = ({ title, apiEndpoint }) => {
             fontSize: "16px",
           }}
         >
-          {showAll ? "Collapse" : "Show all"}
+          {showAll ? "Collapse" : "Show All"}
         </Button>
       </Box>
 

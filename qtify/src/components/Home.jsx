@@ -13,8 +13,7 @@ const Home = () => {
       <div
         style={{
           backgroundColor: "#121212",
-          paddingLeft: "20px",
-          paddingRight: "20px",
+          padding: "20px",
         }}
       >
         <Section

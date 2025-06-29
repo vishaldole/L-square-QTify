@@ -19,7 +19,7 @@ const Section = ({ title, apiEndpoint }) => {
           console.error(err);
         });
     };
-    setTimeout(delayFetch, 0);
+    setTimeout(delayFetch, 100);
   }, [apiEndpoint]);
 
   useEffect(() => {

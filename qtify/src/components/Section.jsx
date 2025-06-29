@@ -32,8 +32,9 @@ const Section = ({ title, apiEndpoint }) => {
         </Typography>
         <Button
           onClick={() => setShowAll((prev) => !prev)}
+          data-testid={`${title.toLowerCase().replace(/\s/g, "-")}-toggle`} 
           sx={{
-            color: "#1DB954",
+            color: "#34C94B",
             fontWeight: "bold",
             textTransform: "none",
             fontSize: "16px",
@@ -51,6 +52,7 @@ const Section = ({ title, apiEndpoint }) => {
               image={album.image}
               title={album.title}
               follows={album.follows}
+               data-testid={`album-card-${album.title}`}
             />
           </Grid>
         ))}

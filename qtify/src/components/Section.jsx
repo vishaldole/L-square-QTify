@@ -8,10 +8,17 @@ const Section = ({ title, apiEndpoint }) => {
   const [showAll, setShowAll] = useState(false);
 
   useEffect(() => {
-    axios
-      .get(apiEndpoint)
-      .then((response) => setAlbums(response.data))
-      .catch((error) => console.error("Error fetching albums:", error));
+    const delayFetch = () => {
+      axios
+        .get(apiEndpoint)
+        .then((res) => {
+          setAlbums(res.data);
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    };
+    setTimeout(delayFetch, 0);
   }, [apiEndpoint]);
 
   const displayedAlbums = showAll ? albums : albums.slice(0, 7);
@@ -32,7 +39,7 @@ const Section = ({ title, apiEndpoint }) => {
         </Typography>
         <Button
           onClick={() => setShowAll((prev) => !prev)}
-          data-testid={`${title.toLowerCase().replace(/\s/g, "-")}-toggle`} 
+          data-testid={`${title.toLowerCase().replace(/\s/g, "-")}-toggle`}
           sx={{
             color: "#34C94B",
             fontWeight: "bold",
@@ -52,7 +59,7 @@ const Section = ({ title, apiEndpoint }) => {
               image={album.image}
               title={album.title}
               follows={album.follows}
-               data-testid={`album-card-${album.title}`}
+              data-testid={`album-card-${album.title}`}
             />
           </Grid>
         ))}

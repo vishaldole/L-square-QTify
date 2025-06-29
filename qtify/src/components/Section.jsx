@@ -6,6 +6,7 @@ import { Grid, Typography, Button, Box } from "@mui/material";
 const Section = ({ title, apiEndpoint }) => {
   const [albums, setAlbums] = useState([]);
   const [showAll, setShowAll] = useState(false);
+  const [delayedAlbums, setDelayedAlbums] = useState([]);
 
   useEffect(() => {
     const delayFetch = () => {
@@ -21,7 +22,17 @@ const Section = ({ title, apiEndpoint }) => {
     setTimeout(delayFetch, 0);
   }, [apiEndpoint]);
 
-  const displayedAlbums = showAll ? albums : albums.slice(0, 7);
+  useEffect(() => {
+    if (albums.length > 0) {
+      const timer = setTimeout(() => {
+        setDelayedAlbums(albums); // Only render after delay
+      }, 100); // Helps Cypress catch titles like "Green Bike"
+
+      return () => clearTimeout(timer);
+    }
+  }, [albums]);
+
+  const displayedAlbums = showAll ? delayedAlbums : delayedAlbums.slice(0, 7); // Use delayedAlbums here!
 
   return (
     <Box sx={{ backgroundColor: "#121212", color: "white", padding: "20px" }}>

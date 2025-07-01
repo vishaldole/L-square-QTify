@@ -1,8 +1,6 @@
 import React from "react";
 import Navbar from "./Navbar";
 import Hero from "./Hero";
-import AlbumCard from "./AlbumCard";
-import headphoneImg from "../assets/hero_headphones.png";
 import Section from "./Section";
 
 const Home = () => {

@@ -25,6 +25,13 @@ const Home = () => {
           apiEndpoint="https://qtify-backend-labs.crio.do/albums/new"
         />
       </div>
+      <div style={{ backgroundColor: "#121212", padding: "20px" }}>
+        <Section
+          title="Songs"
+          apiEndpoint="https://qtify-backend-labs.crio.do/songs"
+          type="songs"
+        />
+      </div>
     </div>
   );
 };
